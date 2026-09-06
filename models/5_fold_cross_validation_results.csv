@@ -1,0 +1,6 @@
+Model,Mean Accuracy,Std Accuracy,Mean Precision,Mean Recall,Mean F1
+Logistic Regression,99.6,0.04,99.33,99.97,99.65
+Decision Tree,72.95,15.12,99.01,53.6,65.88
+Random Forest,84.11,14.44,99.12,72.01,79.77
+Linear SVM,99.68,0.02,99.44,100.0,99.72
+XGBoost,99.66,0.03,99.47,99.94,99.71
