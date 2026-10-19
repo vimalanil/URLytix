@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URLytix | Phishing URL Detection</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+
+<a href="/" class="brand">
+    <img src="{{ url_for('static', filename='logo.png') }}"
+         alt="URLytix shield and scan logo"
+         class="brand-logo">
+    <span>URLytix</span>
+</a>
+
+        <span class="nav-label">ML SECURITY ANALYSIS</span>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="eyebrow">
+                <span class="status-dot"></span>
+                MACHINE LEARNING PROTECTION
+            </div>
+
+            <h1>Detect phishing URLs<br>
+                <span>with intelligence.</span>
+            </h1>
+
+            <p class="subtitle">
+                Analyze URL characteristics using your trained
+                Linear SVM machine learning model.
+            </p>
+        </section>
+
+        <section class="scanner-card">
+            <div class="card-heading">
+                <div>
+                    <h2>URL Scanner</h2>
+                    <p>Enter the URL you want to classify.</p>
+                </div>
+                <div class="shield">⌕</div>
+            </div>
+
+            <form method="POST" action="/">
+                <label for="url">Website URL</label>
+
+                <div class="input-wrapper">
+                    <span class="input-icon">↗</span>
+                    <input
+                        type="text"
+                        id="url"
+                        name="url"
+                        placeholder="https://example.com"
+                        value="{{ submitted_url }}"
+                        maxlength="2048"
+                        required
+                        autocomplete="url"
+                    >
+                </div>
+
+                <button type="submit" class="scan-button">
+                    Analyze URL <span>→</span>
+                </button>
+            </form>
+
+            {% if error %}
+                <div class="result error" role="alert">
+                    <strong>Unable to analyze URL</strong>
+                    <p>{{ error }}</p>
+                </div>
+            {% endif %}
+
+            {% if result == "PHISHING" %}
+                <div class="result phishing" role="status">
+                    <div class="result-symbol">!</div>
+                    <div>
+                        <span class="result-label">MODEL PREDICTION</span>
+                        <h3>Potential Phishing URL</h3>
+                        <p>
+                            The model classified this URL as phishing.
+                            Avoid interacting with it until verified.
+                        </p>
+                    </div>
+                </div>
+            {% elif result == "LEGITIMATE" %}
+                <div class="result legitimate" role="status">
+                    <div class="result-symbol">✓</div>
+                    <div>
+                        <span class="result-label">MODEL PREDICTION</span>
+                        <h3>Classified as Legitimate</h3>
+                        <p>
+                            The model classified this URL as legitimate.
+                            This result does not guarantee that the URL
+                            is safe.
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if result %}
+                <div class="details">
+                    <div class="detail-row">
+                        <span>Analyzed URL</span>
+                        <strong class="url-value">{{ submitted_url }}</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Classification method</span>
+                        <strong>Linear SVM</strong>
+                    </div>
+                    {% if decision_score is not none %}
+                    <div class="detail-row">
+                        <span>SVM decision score</span>
+                        <strong>{{ "%.4f"|format(decision_score) }}</strong>
+                    </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </section>
+
+        <section class="info-grid">
+            <article class="info-card">
+                <span class="info-icon">01</span>
+                <h3>URL Features</h3>
+                <p>18 lexical features are extracted from the submitted URL.</p>
+            </article>
+            <article class="info-card">
+                <span class="info-icon">02</span>
+                <h3>ML Classification</h3>
+                <p>The saved scaler and Linear SVM pipeline classify the features.</p>
+            </article>
+            <article class="info-card">
+                <span class="info-icon">03</span>
+                <h3>Instant Result</h3>
+                <p>The interface displays the predicted class and decision score.</p>
+            </article>
+        </section>
+
+        <p class="disclaimer">
+            Educational project. Predictions are not a security guarantee.
+            URLs are classified from their extracted characteristics;
+            this application does not visit or verify the destination.
+        </p>
+    </main>
+
+
+<footer>
+    <span>URLytix</span>
+    <span>Phishing URL Detection Using Machine Learning</span>
+    <span>Developed by Vimal Anil</span>
+</footer>
+
+</body>
+</html>

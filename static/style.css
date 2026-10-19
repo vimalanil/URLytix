@@ -1,0 +1,537 @@
+
+:root {
+    --background: #000000;
+    --panel: #111111;
+    --panel-light: #191919;
+    --border: #333333;
+    --text: #FFFFFF;
+    --muted: #B8B8B8;
+    --accent: #FFFFFF;
+    --danger: #ff4d4d;
+    --danger-bg: #200909;
+    --success: #4ade80;
+    --success-bg: #071b0e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navigation */
+
+.navbar {
+    min-height: 76px;
+    padding: 16px 7%;
+    border-bottom: 1px solid #292929;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #000000;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: #000000;
+    font-weight: 800;
+}
+
+.nav-label {
+    color: #FFFFFF;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+/* Main container */
+
+.container {
+    width: min(100% - 36px, 980px);
+    margin: 0 auto;
+}
+
+/* Hero section */
+
+.hero {
+    padding: 65px 0 36px;
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #FFFFFF;
+    border-radius: 50%;
+}
+
+h1 {
+    margin: 22px 0 14px;
+    color: #FFFFFF;
+    font-size: clamp(35px, 6vw, 55px);
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+}
+
+h1 span {
+    color: #FFFFFF;
+}
+
+.subtitle {
+    max-width: 570px;
+    margin: 0 auto;
+    color: #D0D0D0;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+
+/* URLytix logo */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.brand-logo {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* Scanner card */
+
+.scanner-card {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #333333;
+    border-radius: 16px;
+    background: #111111;
+    box-shadow: 0 20px 55px rgba(255, 255, 255, 0.025);
+}
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 26px;
+}
+
+.card-heading h2 {
+    margin: 0 0 7px;
+    color: #FFFFFF;
+    font-size: 23px;
+}
+
+.card-heading p,
+.info-card p {
+    color: #B8B8B8;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.shield {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #222222;
+    color: #FFFFFF;
+    border: 1px solid #444444;
+    font-size: 25px;
+}
+
+/* URL input */
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 15px;
+    border: 1px solid #444444;
+    border-radius: 9px;
+    background: #050505;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-wrapper:focus-within {
+    border-color: #FFFFFF;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.input-icon {
+    color: #FFFFFF;
+    font-size: 22px;
+}
+
+input {
+    width: 100%;
+    height: 54px;
+    border: 0;
+    outline: none;
+    color: #FFFFFF;
+    background: transparent;
+    font: inherit;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #999999;
+    opacity: 1;
+}
+
+/* Scan button */
+
+.scan-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 17px;
+    padding: 16px;
+    border: 1px solid #FFFFFF;
+    border-radius: 9px;
+    color: #000000;
+    background: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.scan-button:hover {
+    color: #FFFFFF;
+    background: #222222;
+}
+
+.scan-button:active {
+    transform: scale(0.99);
+}
+
+.scan-button:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 4px;
+}
+
+/* Shared result card */
+
+.result {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 23px;
+    padding: 19px;
+    border: 1px solid #555555;
+    border-radius: 10px;
+    background: #191919;
+    color: #FFFFFF;
+}
+
+.result-symbol {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #666666;
+    border-radius: 50%;
+    color: #FFFFFF;
+    background: #222222;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.result-label {
+    color: #FFFFFF;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+}
+
+.result h3 {
+    margin: 7px 0;
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+.result p {
+    margin: 0;
+    color: #D0D0D0;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* PHISHING RESULT — RED */
+
+.phishing {
+    border-color: var(--danger);
+    background: var(--danger-bg);
+    box-shadow: 0 0 18px rgba(255, 59, 59, 0.07);
+}
+
+.phishing .result-symbol {
+    color: var(--danger);
+    border-color: var(--danger);
+    background: #350d0d;
+}
+
+.phishing .result-label,
+.phishing h3 {
+    color: var(--danger);
+}
+
+.phishing p {
+    color: #F2CCCC;
+}
+
+/* LEGITIMATE RESULT — GREEN */
+
+.legitimate {
+    border-color: #22c55e;
+    background: var(--success-bg);
+    box-shadow: 0 0 18px rgba(34, 197, 94, 0.07);
+}
+
+.legitimate .result-symbol {
+    color: var(--success);
+    border-color: #22c55e;
+    background: #0c2916;
+}
+
+.legitimate .result-label,
+.legitimate h3 {
+    color: var(--success);
+}
+
+.legitimate p {
+    color: #C8F3D5;
+}
+
+/* ERROR RESULT — NEUTRAL */
+
+.error {
+    border-color: #666666;
+    background: #191919;
+}
+
+.error .result-symbol {
+    color: #FFFFFF;
+    border-color: #666666;
+    background: #292929;
+}
+
+.error .result-label,
+.error h3 {
+    color: #FFFFFF;
+}
+
+.error p {
+    color: #D0D0D0;
+}
+
+/* Prediction details */
+
+.details {
+    margin-top: 20px;
+    border-top: 1px solid #333333;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid #292929;
+    color: #B8B8B8;
+    font-size: 12px;
+}
+
+.detail-row span {
+    color: #B8B8B8;
+}
+
+.detail-row strong {
+    color: #FFFFFF;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.url-value {
+    max-width: 65%;
+}
+
+/* Information cards */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 26px;
+}
+
+.info-card {
+    padding: 21px;
+    border: 1px solid #292929;
+    border-radius: 12px;
+    background: #0D0D0D;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.info-card:hover {
+    border-color: #555555;
+    transform: translateY(-2px);
+}
+
+.info-icon {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.info-card h3 {
+    margin: 13px 0 8px;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+/* Disclaimer */
+
+.disclaimer {
+    margin: 28px auto 35px;
+    max-width: 680px;
+    color: #AFAFAF;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* Footer */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 24px 7%;
+    border-top: 1px solid #292929;
+    background: #000000;
+    color: #B8B8B8;
+    font-size: 11px;
+}
+
+/* Responsive layout */
+
+@media (max-width: 650px) {
+    .navbar {
+        padding: 16px 20px;
+    }
+
+    .brand {
+        font-size: 20px;
+    }
+
+    .nav-label {
+        font-size: 9px;
+        letter-spacing: 0.8px;
+    }
+
+    .hero {
+        padding-top: 45px;
+    }
+
+    h1 {
+        letter-spacing: -1px;
+    }
+
+    .scanner-card {
+        padding: 20px;
+    }
+
+    .card-heading h2 {
+        font-size: 20px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .detail-row strong {
+        text-align: left;
+    }
+
+    .url-value {
+        max-width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
