@@ -1,4 +1,3 @@
-
 :root {
     --background: #000000;
     --panel: #111111;
@@ -410,6 +409,52 @@ input::placeholder {
 
 .url-value {
     max-width: 65%;
+}
+
+/* URL details, model output and feature chips */
+
+.details-heading {
+    margin-top: 24px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+/* The heading already sits above the list, so tighten the gap
+   that .details normally leaves above its top border. */
+.details-first {
+    margin-top: 10px;
+}
+
+.chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.chip {
+    padding: 7px 13px;
+    border: 1px solid #555555;
+    border-radius: 999px;
+    color: #FFFFFF;
+    background: #191919;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.chip-phishing {
+    color: #F2CCCC;
+    border-color: var(--danger);
+    background: var(--danger-bg);
+}
+
+.chip-legitimate {
+    color: #C8F3D5;
+    border-color: #22c55e;
+    background: var(--success-bg);
 }
 
 /* Information cards */

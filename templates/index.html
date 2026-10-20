@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +27,7 @@
                 MACHINE LEARNING PROTECTION
             </div>
 
-            <h1>Detect phishing URLs<br>
-                <span>with intelligence.</span>
+            <h1>Detect phishing URLs
             </h1>
 
             <p class="subtitle">
@@ -83,8 +81,9 @@
                         <span class="result-label">MODEL PREDICTION</span>
                         <h3>Potential Phishing URL</h3>
                         <p>
-                            The model classified this URL as phishing.
-                            Avoid interacting with it until verified.
+                            The model classified this URL as phishing
+                            based on its structure. Avoid interacting
+                            with it until it has been verified.
                         </p>
                     </div>
                 </div>
@@ -95,31 +94,69 @@
                         <span class="result-label">MODEL PREDICTION</span>
                         <h3>Classified as Legitimate</h3>
                         <p>
-                            The model classified this URL as legitimate.
-                            This result does not guarantee that the URL
-                            is safe.
+                            The model classified this URL as legitimate
+                            based on its structure. This result does not
+                            guarantee that the URL is safe.
                         </p>
                     </div>
                 </div>
             {% endif %}
 
             {% if result %}
-                <div class="details">
+                <div class="details-heading">URL Details</div>
+                <div class="details details-first">
                     <div class="detail-row">
-                        <span>Analyzed URL</span>
+                        <span>Submitted URL</span>
                         <strong class="url-value">{{ submitted_url }}</strong>
                     </div>
+                    {% if url_info %}
                     <div class="detail-row">
-                        <span>Classification method</span>
-                        <strong>Linear SVM</strong>
+                        <span>Domain</span>
+                        <strong>{{ url_info.domain }}</strong>
                     </div>
-                    {% if decision_score is not none %}
                     <div class="detail-row">
-                        <span>SVM decision score</span>
-                        <strong>{{ "%.4f"|format(decision_score) }}</strong>
+                        <span>Top-level domain</span>
+                        <strong>{{ url_info.tld }}</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Subdomains</span>
+                        <strong>{{ url_info.subdomains }}</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Protocol</span>
+                        <strong>{{ url_info.protocol }}</strong>
+                    </div>
+                    {% if url_info.has_port %}
+                    <div class="detail-row">
+                        <span>Port</span>
+                        <strong>{{ url_info.port }}</strong>
+                    </div>
+                    {% endif %}
+                    <div class="detail-row">
+                        <span>URL length</span>
+                        <strong>{{ url_info.length }} characters</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>IP address</span>
+                        <strong>{{ url_info.ip_address }}</strong>
                     </div>
                     {% endif %}
                 </div>
+
+                {% if top_features %}
+                <div class="details-heading">
+                    {% if result == "PHISHING" %}
+                        Top features pointing to phishing
+                    {% else %}
+                        Top features pointing to legitimate
+                    {% endif %}
+                </div>
+                <div class="chip-list">
+                    {% for feature in top_features %}
+                        <span class="chip {{ 'chip-phishing' if result == 'PHISHING' else 'chip-legitimate' }}">{{ feature }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
             {% endif %}
         </section>
 
@@ -127,7 +164,7 @@
             <article class="info-card">
                 <span class="info-icon">01</span>
                 <h3>URL Features</h3>
-                <p>18 lexical features are extracted from the submitted URL.</p>
+                <p>18 lexical features are extracted from the submitted URL, and its domain, protocol and length are shown in the results.</p>
             </article>
             <article class="info-card">
                 <span class="info-icon">02</span>
@@ -137,14 +174,16 @@
             <article class="info-card">
                 <span class="info-icon">03</span>
                 <h3>Instant Result</h3>
-                <p>The interface displays the predicted class and decision score.</p>
+                <p>The interface displays the predicted class, the URL details and the features that influenced the result most.</p>
             </article>
         </section>
 
         <p class="disclaimer">
             Educational project. Predictions are not a security guarantee.
             URLs are classified from their extracted characteristics;
-            this application does not visit or verify the destination.
+            this application does not visit or verify the destination,
+            and the IP address row only shows whether the domain is
+            written as an IP address.
         </p>
     </main>
 
